@@ -29,7 +29,7 @@
         </div>
         <br class="auto-style2" />
         Contraseña:&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Contra" runat="server"></asp:TextBox>
+        <asp:TextBox ID="Contra" runat="server" TextMode="Password"></asp:TextBox>
         <br class="auto-style2" />
         <br class="auto-style2" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
