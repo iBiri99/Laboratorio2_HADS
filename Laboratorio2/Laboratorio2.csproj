@@ -71,6 +71,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="Confirmar.aspx" />
     <Content Include="registro.aspx" />
+    <Content Include="CambiarPass.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="registro.aspx.designer.cs">
       <DependentUpon>registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CambiarPass.aspx.cs">
+      <DependentUpon>CambiarPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambiarPass.aspx.designer.cs">
+      <DependentUpon>CambiarPass.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
