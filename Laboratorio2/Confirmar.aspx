@@ -10,6 +10,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            Su usuario ha sido validado correctamente<br />
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Inicio.aspx">Pagina de inicio</asp:HyperLink>
         </div>
     </form>
 </body>
