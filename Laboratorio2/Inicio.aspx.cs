@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 
 namespace Laboratorio2
 {
@@ -16,7 +17,8 @@ namespace Laboratorio2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+                 AccesoADatos.Datos bd = new AccesoADatos.Datos();
+                 int a=bd.AbrirSesion();
         }
     }
 }
