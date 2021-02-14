@@ -26,15 +26,27 @@ namespace AccesoADatos
                 return 1;
             }
         }
-        //Funcion que saca si el correo esta en la base de datos.
+        //Funcion que saca si el correo esta en la base de datos. 1= si esta y 0 si no.
         public int comprobarCorreo(String correo)
         {
-            command = new SqlCommand("Select count(email) from Usuarios where email=", cnn);
-            command.CommandText ="Select count(email) from Usuarios where email="+correo;
+            command = new SqlCommand("Select count(email) from Usuarios where email=@email", cnn);
+            //command.CommandText ="Select count(email) from Usuarios where email="+correo;
+            command.Parameters.Add("@email",System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = correo;
+            return (int) command.ExecuteScalar();
+        }
 
-            Console.WriteLine(command.ExecuteScalar());
-            Console.WriteLine("HOLAAAAAAAAAAAAAAAAAAAAAA");
-            return 0;
+        //Funcion que saca si el correo y la contraseña es correcta. 1= si es correcto y 0 si no lo es.
+        public int comprobarCorreoYContraseña(String correo, String pass)
+        {
+            command = new SqlCommand("Select count(email) from Usuarios where email=@email and Pass=@Pass", cnn);
+            //command.CommandText ="Select count(email) from Usuarios where email="+correo;
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = correo;
+            command.Parameters.Add("@Pass", System.Data.SqlDbType.VarChar);
+            command.Parameters["@Pass"].Value = pass;
+
+            return (int)command.ExecuteScalar();
         }
 
         public int cerrarConexion()

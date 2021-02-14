@@ -37,8 +37,24 @@ namespace Laboratorio2
             int a=bd.AbrirSesion();
             if (a == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "ClientScript", "alert('La conexion se ha realizado correctamente.')", true);
-                bd.comprobarCorreo("hola");
+
+                //ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "ClientScript", "alert('La conexion se ha realizado correctamente.')", true);
+                int b = bd.comprobarCorreoYContraseña(Correo.Text,Contra.Text);
+                if (b == 1)//El inicio de sesion ha sido correcto!
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
+                    Response.Redirect("http://www.google.com");
+
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('El correo o contraseña es incorrecto.');", true);
+                }
+
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ha habido un problema (con la base de datos).');", true);
             }
         }
     }
