@@ -10,29 +10,31 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Direccíón de correo<asp:TextBox ID="TextBox1" runat="server" style="margin-left: 24px"></asp:TextBox>
+            Direccíón de correo<asp:TextBox ID="TextBox1" runat="server" style="margin-left: 24px" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
 &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox1" Display="Dynamic" ErrorMessage="Correo no valido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
 &nbsp;&nbsp;
             <br />
             <br />
-            Nombre y apellidos<asp:TextBox ID="TextBox2" runat="server" style="margin-left: 25px"></asp:TextBox>
+            Nombre y apellidos<asp:TextBox ID="TextBox2" runat="server" style="margin-left: 25px" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
             <br />
             <br />
-            password<asp:TextBox ID="TextBox3" runat="server" style="margin-left: 85px" TextMode="Password"></asp:TextBox>
+            Apellidos<br />
+            <br />
+            password<asp:TextBox ID="TextBox3" runat="server" style="margin-left: 85px" TextMode="Password" OnTextChanged="TextBox3_TextChanged"></asp:TextBox>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox3" ErrorMessage="contraseña no valida" ValidationExpression="^.{6,}$"></asp:RegularExpressionValidator>
             <br />
             <br />
-            password<asp:TextBox ID="TextBox4" runat="server" style="margin-left: 82px" TextMode="Password"></asp:TextBox>
+            password<asp:TextBox ID="TextBox4" runat="server" style="margin-left: 82px" TextMode="Password" OnTextChanged="TextBox4_TextChanged"></asp:TextBox>
             <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TextBox3" ControlToValidate="TextBox4" ErrorMessage="CompareValidator">las contraseñas no coinciden</asp:CompareValidator>
             <br />
             <br />
-            Rol<asp:DropDownList ID="DropDownList1" runat="server" Height="16px" style="margin-left: 122px" Width="127px">
+            Rol<asp:DropDownList ID="DropDownList1" runat="server" Height="16px" style="margin-left: 122px" Width="127px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                 <asp:ListItem>Alumno</asp:ListItem>
                 <asp:ListItem>Profesor</asp:ListItem>
             </asp:DropDownList>
             <br />
             <br />
-            <asp:Button ID="Button1" runat="server" Text="Registrarse" />
+            <asp:Button ID="Button1" runat="server" Text="Registrarse" OnClick="Button1_Click" />
         </div>
     </form>
 </body>
