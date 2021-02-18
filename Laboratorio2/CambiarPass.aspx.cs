@@ -16,7 +16,13 @@ namespace Laboratorio2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            AccesoADatos.Datos bd = new AccesoADatos.Datos();
+            int a = bd.AbrirSesion();
+            if (a == 0)
+            {
+                int resul = bd.CambiarContrasenaCorreo(Correo.Text);
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert(" + resul + ");", true);
+            }
         }
     }
 }

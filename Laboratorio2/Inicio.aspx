@@ -21,7 +21,7 @@
         <strong><span class="auto-style1">Inicio de sesión:</span></strong><br class="auto-style2" />
         <br class="auto-style2" />
         Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email"></asp:TextBox>
+        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email" required="true"></asp:TextBox>
         <br />
         <br class="auto-style2" />
         <div style="margin-left: 40px">
@@ -29,7 +29,7 @@
         </div>
         <br class="auto-style2" />
         Contraseña:&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Contra" runat="server" TextMode="Password"></asp:TextBox>
+        <asp:TextBox ID="Contra" runat="server" TextMode="Password" required="true"></asp:TextBox>
         <br class="auto-style2" />
         <br class="auto-style2" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

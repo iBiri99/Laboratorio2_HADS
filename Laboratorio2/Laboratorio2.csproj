@@ -118,6 +118,10 @@
       <Project>{8dbe0f6d-1bc2-4d58-844c-7293cf09a12c}</Project>
       <Name>AccesoADatos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EnvioCorreo\EnvioCorreo.csproj">
+      <Project>{242e9e76-bbd2-472b-b88f-d40f383f93c4}</Project>
+      <Name>EnvioCorreo</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

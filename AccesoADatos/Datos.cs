@@ -36,17 +36,82 @@ namespace AccesoADatos
             return (int) command.ExecuteScalar();
         }
 
-        //Funcion que saca si el correo y la contraseña es correcta. 1= si es correcto y 0 si no lo es.
+        //Funcion que saca si el correo y la contraseña es correcta. 1= si es correcto y 0 si no lo es. 2= No esta confirmado.
         public int comprobarCorreoYContraseña(String correo, String pass)
         {
             command = new SqlCommand("Select count(email) from Usuarios where email=@email and Pass=@Pass", cnn);
-            //command.CommandText ="Select count(email) from Usuarios where email="+correo;
+            SqlCommand command2 = new SqlCommand("Select confirmado from Usuarios where email=@email and Pass=@Pass", cnn); //Mejorar esto.
+
+            //Parametros para el primero.
             command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
             command.Parameters["@email"].Value = correo;
             command.Parameters.Add("@Pass", System.Data.SqlDbType.VarChar);
             command.Parameters["@Pass"].Value = pass;
 
-            return (int)command.ExecuteScalar();
+            //Añadiendo parametros para el segundo.
+            command2.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command2.Parameters["@email"].Value = correo;
+            command2.Parameters.Add("@Pass", System.Data.SqlDbType.VarChar);
+            command2.Parameters["@Pass"].Value = pass;
+
+            bool confi=(bool)command2.ExecuteScalar();
+            if (confi)
+            {
+                //Todo bien, deberia de devolver 1.
+                return (int)command.ExecuteScalar();
+            }
+            else
+            {
+                //Todo bien, deberia de devolver 2.
+                return 2;
+            }
+
+           
+        }
+
+        //0-> no existe correo
+        //1-> Todo correcto.
+        //3-> Ha habido algun error
+        
+        public int CambiarContrasenaCorreo(String correo)
+        {
+            int esta = comprobarCorreo(correo);
+            if (esta == 1)
+            {
+                try
+                {
+                    //Creacion del numero aleatorio
+                    var rand = new Random();
+                    int num = rand.Next(100000, 999999);
+
+                    command = new SqlCommand("UPDATE Usuarios SET codpass = @value WHERE email=@email;", cnn);
+                    command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+                    command.Parameters["@email"].Value = correo;
+                    command.Parameters.Add("@value", System.Data.SqlDbType.VarChar);
+                    command.Parameters["@value"].Value = num;
+                    command.ExecuteNonQuery();
+
+                    //Ahora mandaremos el correo.
+
+                    EnvioCorreo.Correo cor = new EnvioCorreo.Correo();
+                    if (cor.cambiarContraseña(correo, num)==2)
+                    {
+                        return 2;
+                    }
+                    
+
+                    return 1;
+                }
+                catch
+                {
+                    return 3; 
+                }
+            }
+            else
+            {
+                return 0;
+            }
+           
         }
 
         public int cerrarConexion()

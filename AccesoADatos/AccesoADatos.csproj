@@ -44,5 +44,11 @@
     <Compile Include="Datos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnvioCorreo\EnvioCorreo.csproj">
+      <Project>{242e9e76-bbd2-472b-b88f-d40f383f93c4}</Project>
+      <Name>EnvioCorreo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

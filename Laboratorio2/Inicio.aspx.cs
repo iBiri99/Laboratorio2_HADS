@@ -33,18 +33,21 @@ namespace Laboratorio2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             bd = new AccesoADatos.Datos();
             int a=bd.AbrirSesion();
             if (a == 0)
             {
-
-                //ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "ClientScript", "alert('La conexion se ha realizado correctamente.')", true);
                 int b = bd.comprobarCorreoYContraseña(Correo.Text,Contra.Text);
                 if (b == 1)//El inicio de sesion ha sido correcto!
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
                     Response.Redirect("http://www.google.com");
 
+                }
+                else if(b==2)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Tienes que confirmar el correo :)');", true);
                 }
                 else
                 {
@@ -56,6 +59,8 @@ namespace Laboratorio2
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ha habido un problema (con la base de datos).');", true);
             }
+            bd.cerrarConexion();
         }
+
     }
 }

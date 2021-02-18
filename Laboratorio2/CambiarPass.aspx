@@ -22,7 +22,7 @@
         <strong><span class="auto-style1">Cambiar contraseña:</span></strong><br class="auto-style2" />
         <br class="auto-style2" />
         Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email"></asp:TextBox>
+        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email" required="true"></asp:TextBox>
             <br class="auto-style2" />
             <div style="margin-left: 40px">
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Correo" ErrorMessage="Correo electronico no valido." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
