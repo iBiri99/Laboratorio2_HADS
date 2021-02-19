@@ -8,7 +8,7 @@ namespace EnvioCorreo
 
         //0= todo bien
         //2= ha saltado
-        public int cambiarContraseña(string correo,int conf)
+        public int cambiarContraseña(string correo,int conf,string pagin)
         {
             try
             {
@@ -18,7 +18,7 @@ namespace EnvioCorreo
                 mail.From = new MailAddress("hads2021@outlook.es");
                 mail.To.Add(correo);
                 mail.Subject = "Cambiar contraseña";
-                mail.Body = "Accede al siguiente enlace para poder cambiar la contraseña de este usuario";
+                mail.Body = "Accede al siguiente enlace para poder cambiar la contraseña de este usuario: \n "+ pagin + "?cod="+conf+"&mail="+correo+"\n El codigo es: "+conf ;
 
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("hads2021@outlook.es", "1234Pass");

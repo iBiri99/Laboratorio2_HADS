@@ -71,9 +71,9 @@ namespace AccesoADatos
 
         //0-> no existe correo
         //1-> Todo correcto.
-        //3-> Ha habido algun error
+        //2-> Ha habido algun error
         
-        public int CambiarContrasenaCorreo(String correo)
+        public int CambiarContrasenaCorreo(String correo,String pagin)
         {
             int esta = comprobarCorreo(correo);
             if (esta == 1)
@@ -94,7 +94,7 @@ namespace AccesoADatos
                     //Ahora mandaremos el correo.
 
                     EnvioCorreo.Correo cor = new EnvioCorreo.Correo();
-                    if (cor.cambiarContraseña(correo, num)==2)
+                    if (cor.cambiarContraseña(correo, num,pagin)==2)
                     {
                         return 2;
                     }
@@ -104,7 +104,7 @@ namespace AccesoADatos
                 }
                 catch
                 {
-                    return 3; 
+                    return 2; 
                 }
             }
             else
@@ -112,6 +112,50 @@ namespace AccesoADatos
                 return 0;
             }
            
+        }
+
+        //0->No existe correo o el codigo es incorrecto
+        //1->Todo bien
+        //2->Fallo extra.
+        //3->Resul raro :(
+        public int cambiarPass(String correo, String pass, String codigo)
+        {
+            //Primero vamos a comprobar que el codigo metido sea el correcto.
+            SqlCommand command3 = new SqlCommand("Select count(email) from Usuarios where email=@email and codpass=@cod", cnn);
+
+            //Parametros para el primero.
+            command3.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command3.Parameters["@email"].Value = correo;
+            command3.Parameters.Add("@cod", System.Data.SqlDbType.VarChar);
+            command3.Parameters["@cod"].Value = codigo;
+
+            int resul = (int)command3.ExecuteScalar();
+            //int resul = 1;
+            if(resul == 1) //TODO BIEN
+            {
+                try
+                {
+                    System.Diagnostics.Debug.WriteLine("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                    //Procedemos a cambiar la contraseña.
+                    SqlCommand command2 = new SqlCommand("UPDATE Usuarios SET pass = @value, codpass='000000' WHERE email=@email;", cnn);
+                    command2.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+                    command2.Parameters["@email"].Value = correo;
+                    command2.Parameters.Add("@value", System.Data.SqlDbType.VarChar);
+                    command2.Parameters["@value"].Value = pass;
+                    command2.ExecuteNonQuery();
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+            }
+            else if(resul==0)
+            {
+                return 0;
+            }
+            return 3;
+
         }
 
         public int cerrarConexion()
