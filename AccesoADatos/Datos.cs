@@ -158,6 +158,43 @@ namespace AccesoADatos
 
         }
 
+        public int registrar(String nombre, String apellidos, int numConf, bool confirmado, String correo, String pass, int codpass)
+        {
+            command = new SqlCommand("INSERT INTO Usuarios(email,nombre,apellidos,numconfir,confirmado,tipo,pass,codpass) Values(@email,@nombre,@apellidos,@numconf,@confirmado,@tipo,@pass,@codpass) ", cnn);
+
+
+
+
+            command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
+            command.Parameters["@nombre"].Value = nombre;
+
+            command.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar);
+            command.Parameters["@apellidos"].Value = apellidos;
+
+            command.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
+            command.Parameters["@tipo"].Value = 0;
+
+
+
+            command.Parameters.Add("@numcof", System.Data.SqlDbType.Int);
+            command.Parameters["@numconf"].Value = numConf;
+
+            command.Parameters.Add("@confirmado", System.Data.SqlDbType.Bit);
+            command.Parameters["@confirmado"].Value = confirmado;
+
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = correo;
+
+            command.Parameters.Add("@Pass", System.Data.SqlDbType.VarChar);
+            command.Parameters["@Pass"].Value = pass;
+
+            command.Parameters.Add("@codpass", System.Data.SqlDbType.Int);
+            command.Parameters["@codpass"].Value = codpass;
+
+            return (int)command.ExecuteNonQuery();
+
+        }
+
         public int cerrarConexion()
         {
             try
