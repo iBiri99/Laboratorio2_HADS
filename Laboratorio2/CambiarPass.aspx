@@ -49,7 +49,7 @@
             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="Pass" ErrorMessage="La contraseña tiene que tener 6 digitos por lo menos." ValidationExpression="^.{6,}$"></asp:RegularExpressionValidator>
             <br />
             <br />
-            Repetir contraseña:<asp:TextBox ID="Pass1" runat="server" AutoCompleteType="Email" ></asp:TextBox>
+            Repetir contraseña:<asp:TextBox ID="Pass1" runat="server" AutoCompleteType="Email" OnTextChanged="Pass1_TextChanged" ></asp:TextBox>
             <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="Pass" ControlToValidate="Pass1" ErrorMessage="Las contraseñas no coinciden."></asp:CompareValidator>
             <br />
             <br />
