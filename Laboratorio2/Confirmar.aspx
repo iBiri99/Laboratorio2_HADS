@@ -14,5 +14,7 @@
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Inicio.aspx">Pagina de inicio</asp:HyperLink>
         </div>
     </form>
+    <p>
+        &nbsp;</p>
 </body>
 </html>

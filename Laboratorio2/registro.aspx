@@ -15,10 +15,11 @@
 &nbsp;&nbsp;
             <br />
             <br />
-            Nombre y apellidos<asp:TextBox ID="TextBox2" runat="server" style="margin-left: 25px" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+            Nombre<asp:TextBox ID="TextBox2" runat="server" style="margin-left: 96px" OnTextChanged="TextBox2_TextChanged" Width="120px"></asp:TextBox>
             <br />
             <br />
-            Apellidos<br />
+            Apellidos<asp:TextBox ID="TextBox5" runat="server" style="margin-left: 91px" OnTextChanged="TextBox2_TextChanged" Width="120px"></asp:TextBox>
+            <br />
             <br />
             password<asp:TextBox ID="TextBox3" runat="server" style="margin-left: 85px" TextMode="Password" OnTextChanged="TextBox3_TextChanged"></asp:TextBox>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox3" ErrorMessage="contraseña no valida" ValidationExpression="^.{6,}$"></asp:RegularExpressionValidator>

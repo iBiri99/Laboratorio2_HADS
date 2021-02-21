@@ -90,5 +90,10 @@ namespace Laboratorio2
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hay algun dato mal insertado.');", true);
             }
         }
+
+        protected void Pass1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

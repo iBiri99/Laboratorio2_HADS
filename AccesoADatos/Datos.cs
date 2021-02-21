@@ -160,7 +160,7 @@ namespace AccesoADatos
 
         public int registrar(String nombre, String apellidos, int numConf, bool confirmado, String correo, String pass, int codpass)
         {
-            command = new SqlCommand("INSERT INTO Usuarios(email,nombre,apellidos,numconfir,confirmado,tipo,pass,codpass) Values(@email,@nombre,@apellidos,@numconf,@confirmado,@tipo,@pass,@codpass) ", cnn);
+            command = new SqlCommand("INSERT into Usuarios(email,nombre,apellidos,numconfir,confirmado,tipo,pass,codpass) Values(@email,@nombre,@apellidos,@numconf,@confirmado,@tipo,@pass,@codpass) ", cnn);
 
 
 
@@ -172,11 +172,11 @@ namespace AccesoADatos
             command.Parameters["@apellidos"].Value = apellidos;
 
             command.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
-            command.Parameters["@tipo"].Value = 0;
+            command.Parameters["@tipo"].Value = 0; 
 
 
 
-            command.Parameters.Add("@numcof", System.Data.SqlDbType.Int);
+            command.Parameters.Add("@numconf", System.Data.SqlDbType.Int);
             command.Parameters["@numconf"].Value = numConf;
 
             command.Parameters.Add("@confirmado", System.Data.SqlDbType.Bit);
@@ -191,8 +191,36 @@ namespace AccesoADatos
             command.Parameters.Add("@codpass", System.Data.SqlDbType.Int);
             command.Parameters["@codpass"].Value = codpass;
 
-            return (int)command.ExecuteNonQuery();
+            int resul=(int)command.ExecuteNonQuery();
 
+            if (resul == 1)
+            {
+                System.Diagnostics.Debug.WriteLine("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            }
+            return resul;
+            
+
+        }
+        public int getNumcof(string email)
+        {
+           
+            SqlCommand command4 = new SqlCommand("SELECT numconfir from Usuarios WHERE email=@email;", cnn);
+            command4.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command4.Parameters["@email"].Value = email;
+            var resul= command4.ExecuteReader();
+            int sol;
+            resul.Read();
+            sol= resul.GetInt32(0);
+            resul.Close();
+            return sol;
+            
+        }
+        public void confirmarCorreo(string email)
+        {
+            SqlCommand command3 = new SqlCommand("UPDATE Usuarios SET confirmado = 1 WHERE email = @email;",cnn);
+            command3.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command3.Parameters["@email"].Value = email;
+            command3.ExecuteNonQuery();
         }
 
         public int cerrarConexion()
