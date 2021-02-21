@@ -53,20 +53,31 @@ namespace AccesoADatos
             command2.Parameters["@email"].Value = correo;
             command2.Parameters.Add("@Pass", System.Data.SqlDbType.VarChar);
             command2.Parameters["@Pass"].Value = pass;
-
-            bool confi=(bool)command2.ExecuteScalar();
-            if (confi)
+            try
             {
-                //Todo bien, deberia de devolver 1.
-                return (int)command.ExecuteScalar();
-            }
-            else
-            {
-                //Todo bien, deberia de devolver 2.
-                return 2;
-            }
+                var resul = command2.ExecuteReader();
+                bool confi;
+                resul.Read();
+                confi = resul.GetBoolean(0);
+                resul.Close();
 
-           
+
+                System.Diagnostics.Debug.WriteLine("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + confi);
+                if (confi)
+                {
+                    //Todo bien, deberia de devolver 1.
+                    return (int)command.ExecuteScalar();
+                }
+                else
+                {
+                    //Todo mal, deberia de devolver 2.
+                    return 2;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         //0-> no existe correo
@@ -135,7 +146,7 @@ namespace AccesoADatos
             {
                 try
                 {
-                    System.Diagnostics.Debug.WriteLine("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                    
                     //Procedemos a cambiar la contraseña.
                     SqlCommand command2 = new SqlCommand("UPDATE Usuarios SET pass = @value, codpass='000000' WHERE email=@email;", cnn);
                     command2.Parameters.Add("@email", System.Data.SqlDbType.VarChar);

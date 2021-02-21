@@ -15,21 +15,7 @@ namespace Laboratorio2
         {
 
         }
-/*
-        protected void Page_Unload(object sender, EventArgs e)
-        {
 
-           int a=bd.cerrarConexion();
-            if (a == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "ClientScript", "alert('hello')", true);
-            }
-            else
-            {
-
-            }
-        }
-*/
 
         protected void Button1_Click(object sender, EventArgs e)
         {

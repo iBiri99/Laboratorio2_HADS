@@ -36,7 +36,7 @@
             </div>
         <div id="Cambiar" runat="server" style="height: 241px">&nbsp;<strong><span class="auto-style1">Datos para cambiar contraseña<br />
             </span></strong>Codigo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Codigo" runat="server" AutoCompleteType="Email" ></asp:TextBox>
+        <asp:TextBox ID="Codigo" runat="server" ></asp:TextBox>
             <br />
             <br />
             Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,11 +45,11 @@
             <br />
         <br class="auto-style2" />
             Contraseña:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Pass" runat="server" AutoCompleteType="Email" ></asp:TextBox>
+        <asp:TextBox ID="Pass" runat="server" TextMode="Password" ></asp:TextBox>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="Pass" ErrorMessage="La contraseña tiene que tener 6 digitos por lo menos." ValidationExpression="^.{6,}$"></asp:RegularExpressionValidator>
             <br />
             <br />
-            Repetir contraseña:<asp:TextBox ID="Pass1" runat="server" AutoCompleteType="Email" OnTextChanged="Pass1_TextChanged" ></asp:TextBox>
+            Repetir contraseña:<asp:TextBox ID="Pass1" runat="server" OnTextChanged="Pass1_TextChanged" TextMode="Password" ></asp:TextBox>
             <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="Pass" ControlToValidate="Pass1" ErrorMessage="Las contraseñas no coinciden."></asp:CompareValidator>
             <br />
             <br />
