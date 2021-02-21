@@ -62,7 +62,7 @@ namespace AccesoADatos
                 resul.Close();
 
 
-                System.Diagnostics.Debug.WriteLine("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + confi);
+                
                 if (confi)
                 {
                     //Todo bien, deberia de devolver 1.
@@ -206,7 +206,7 @@ namespace AccesoADatos
 
             if (resul == 1)
             {
-                System.Diagnostics.Debug.WriteLine("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                
             }
             return resul;
             
@@ -226,6 +226,23 @@ namespace AccesoADatos
             return sol;
             
         }
+
+        public bool esConfirmado(string email)
+        {
+
+            SqlCommand command4 = new SqlCommand("SELECT confirmado from Usuarios WHERE email=@email;", cnn);
+            command4.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command4.Parameters["@email"].Value = email;
+            var resul = command4.ExecuteReader();
+            bool sol;
+            resul.Read();
+            sol = resul.GetBoolean(0);
+            resul.Close();
+            return sol;
+
+        }
+
+
         public void confirmarCorreo(string email)
         {
             SqlCommand command3 = new SqlCommand("UPDATE Usuarios SET confirmado = 1 WHERE email = @email;",cnn);

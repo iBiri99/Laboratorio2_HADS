@@ -46,7 +46,7 @@ namespace Laboratorio2
                 var sol=correo.enviarEmail(email,numconf, "https://localhost:44394/Confirmar.aspx");
             
 
-                System.Diagnostics.Debug.WriteLine(sol);
+                
 
 
 

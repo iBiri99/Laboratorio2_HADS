@@ -22,20 +22,25 @@ namespace Laboratorio2
                 var correo = Request.Params["mail"].ToString();
                 var numcof =Request.Params["conf"].ToString();
                 var numconfBD = bd.getNumcof(correo).ToString() ;
-                System.Diagnostics.Debug.WriteLine(numconfBD + " " + numcof); 
+                System.Diagnostics.Debug.WriteLine(numconfBD + " " + numcof);
+                bool estaconfirmado = bd.esConfirmado(correo);
 
-                if (numcof == numconfBD)
+                if (numcof == numconfBD && !estaconfirmado)
+                {
+                    bd.confirmarCorreo(correo);
+                    div1.InnerHtml = "El usuario se ha registrado correctamente";
+                    
+                }
+                else if(numcof!=numconfBD)
                 {
                     
-                    System.Diagnostics.Debug.WriteLine("iguales");
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('El correo se ha confirmado de manera correcta.');", true);
-                    bd.confirmarCorreo(correo);
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("no iguales");
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Numero de confirmacion incorrecta ');", true);
+                    Response.Redirect("~/Inicio.aspx");
 
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('El correo no se ha podido confirmar');", true);
+                }else if (estaconfirmado)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Este usuario ya esta registrado');", true);
+                    Response.Redirect("~/Inicio.aspx");
                 }
             }
         }
