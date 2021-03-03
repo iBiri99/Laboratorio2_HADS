@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio2", "Laboratorio2\Laboratorio2.csproj", "{8474CFC6-3FAF-4099-9C56-A790B34A5BB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio4", "Laboratorio2\Laboratorio4.csproj", "{8474CFC6-3FAF-4099-9C56-A790B34A5BB3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoADatos", "AccesoADatos\AccesoADatos.csproj", "{8DBE0F6D-1BC2-4D58-844C-7293CF09A12C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvioCorreo", "EnvioCorreo\EnvioCorreo.csproj", "{242E9E76-BBD2-472B-B88F-D40F383F93C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnvioCorreo", "EnvioCorreo\EnvioCorreo.csproj", "{242E9E76-BBD2-472B-B88F-D40F383F93C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
