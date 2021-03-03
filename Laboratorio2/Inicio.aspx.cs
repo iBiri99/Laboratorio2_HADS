@@ -21,14 +21,19 @@ namespace Laboratorio2
         {
             
             bd = new AccesoADatos.Datos();
-            int a=bd.AbrirSesion();
+            int a = bd.AbrirSesion();
             if (a == 0)
             {
                 int b = bd.comprobarCorreoYContraseña(Correo.Text,Contra.Text);
                 if (b == 1)//El inicio de sesion ha sido correcto!
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
-                    Response.Redirect("http://www.google.com");
+                    //Como el inicio de sesion ha sido correcto, vamos a guardar en el objeto session el correo y el tipo de usuario (Profe o alumno).
+                    Session["Correo"] = Correo.Text;
+                    //Hay que ver si es alumno o profesor.
+                    Session["Tipo"] = "Prof";
+                    //Session.Add("Tipo", "Alum"); 
+                    Response.Redirect("~/Principal.aspx");
 
                 }
                 else if(b==2)
