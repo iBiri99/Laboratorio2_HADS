@@ -21,7 +21,7 @@
         <strong><span class="auto-style1">Inicio de sesión:</span></strong><br class="auto-style2" />
         <br class="auto-style2" />
         Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email" required="true"></asp:TextBox>
+        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email" required="true" OnTextChanged="Correo_TextChanged"></asp:TextBox>
         <br />
         <br class="auto-style2" />
         <div style="margin-left: 40px">

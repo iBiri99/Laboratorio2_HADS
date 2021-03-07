@@ -250,6 +250,74 @@ namespace AccesoADatos
             command3.Parameters["@email"].Value = email;
             command3.ExecuteNonQuery();
         }
+        public int getTipo(string email)
+        {
+            SqlCommand command = new SqlCommand("SELECT tipo FROM Usuarios WHERE email=@email;", cnn);
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = email;
+            string resul;
+            try
+            {
+                var sol = command.ExecuteReader();
+                sol.Read();
+                resul = sol.GetString(0);
+                sol.Close();
+                
+                if (resul == "Profesor")
+                {
+                    return 1;
+                }
+                else if (resul == "Alumno")
+                {
+                    return 2;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch
+            {
+                return 3;
+            }
+            
+
+          
+
+        }
+
+
+        public int crearTarea(string codigo, string descripcion, string asignatura, int horas, string tipoDeTarea)
+        {
+            command = new SqlCommand("INSERT into TareasGenericas(Codigo, Descripcion, CodAsig, HEstimadas, Explotacion, TipoTarea ) Values(@codigo, @descripcion,@codAsig, @hora, @explotacion, @tipoTarea) ", cnn);
+            
+            command.Parameters.Add("@codigo", System.Data.SqlDbType.NVarChar);
+            command.Parameters["@codigo"].Value = codigo;
+
+            command.Parameters.Add("@descripcion", System.Data.SqlDbType.NVarChar);
+            command.Parameters["@descripcion"].Value = descripcion;
+
+            command.Parameters.Add("@codAsig", System.Data.SqlDbType.NVarChar);
+            command.Parameters["@codAsig"].Value = asignatura;
+
+            command.Parameters.Add("@hora", System.Data.SqlDbType.Int);
+            command.Parameters["@hora"].Value = horas;
+
+            command.Parameters.Add("@explotacion", System.Data.SqlDbType.Bit);
+            command.Parameters["@explotacion"].Value = false;
+
+            command.Parameters.Add("@tipoTarea", System.Data.SqlDbType.VarChar);
+            command.Parameters["@tipoTarea"].Value = tipoDeTarea;
+
+            int resul = (int)command.ExecuteNonQuery();
+
+            if (resul == 1)
+            {
+                //falta mejorar el sistema de gestion de errores
+            }
+            return resul;
+
+        }
 
         public int cerrarConexion()
         {

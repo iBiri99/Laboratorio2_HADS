@@ -25,15 +25,26 @@ namespace Laboratorio2
             if (a == 0)
             {
                 int b = bd.comprobarCorreoYContraseña(Correo.Text,Contra.Text);
+                
                 if (b == 1)//El inicio de sesion ha sido correcto!
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
+                    
+                    //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
                     //Como el inicio de sesion ha sido correcto, vamos a guardar en el objeto session el correo y el tipo de usuario (Profe o alumno).
+                    int tipo= bd.getTipo(Correo.Text);
+
+                    if (tipo == 1)
+                    {
+                        Response.Redirect("~/Profesor.aspx");
+                    }else if (tipo == 2)
+                    {
+                        Response.Redirect("~/Alumno.aspx");
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No se ha podido determinar el tipo de usuariojgfldkjls');", true);
+                    }
                     Session["Correo"] = Correo.Text;
-                    //Hay que ver si es alumno o profesor.
-                    Session["Tipo"] = "Prof";
-                    //Session.Add("Tipo", "Alum"); 
-                    Response.Redirect("~/Principal.aspx");
 
                 }
                 else if(b==2)
@@ -53,5 +64,9 @@ namespace Laboratorio2
             bd.cerrarConexion();
         }
 
+        protected void Correo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
