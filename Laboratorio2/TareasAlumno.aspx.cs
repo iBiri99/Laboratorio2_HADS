@@ -12,6 +12,27 @@ namespace Laboratorio2
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["Tipo"] != null)
+            {
+                if (Session["Tipo"] != "Alum")
+                {
+                    Response.Redirect("~/Inicio.aspx");
+                }
+            }
+            else
+            { //Control de que no venga directamente.
+                Response.Redirect("~/Inicio.aspx");
+            }
+        }
+
+        protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

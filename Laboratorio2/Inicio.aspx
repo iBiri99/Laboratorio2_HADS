@@ -33,7 +33,7 @@
         <br class="auto-style2" />
         <br class="auto-style2" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="Contra" ErrorMessage="La contraseña tiene que tener 6 digitos por lo menos." ValidationExpression="^.{6,}$"></asp:RegularExpressionValidator>
+        &nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="Contra" ErrorMessage="La contraseña tiene que tener 4 digitos por lo menos." ValidationExpression="^.{4,}$"></asp:RegularExpressionValidator>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br class="auto-style2" />
         <div style="margin-left: 320px">

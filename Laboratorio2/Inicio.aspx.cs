@@ -32,7 +32,7 @@ namespace Laboratorio2
                     //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
                     //Como el inicio de sesion ha sido correcto, vamos a guardar en el objeto session el correo y el tipo de usuario (Profe o alumno).
                     int tipo= bd.getTipo(Correo.Text);
-
+                    Session["Correo"] = Correo.Text;
                     if (tipo == 1)
                     {
                         Session["Tipo"] ="Prof";
@@ -44,9 +44,9 @@ namespace Laboratorio2
                     }
                     else
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No se ha podido determinar el tipo de usuariojgfldkjls');", true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No se ha podido determinar el tipo de usuario');", true);
                     }
-                    Session["Correo"] = Correo.Text;
+                    
 
                 }
                 else if(b==2)
