@@ -42,7 +42,7 @@ WHERE codigo in (SELECT Grupo FROM EstudiantesGrupo WHERE EstudiantesGrupo.Email
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
             </div>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" SelectCommand="SELECT [Codigo], [Descripcion], [HEstimadas], [TipoTarea] FROM [TareasGenericas] WHERE (([Explotacion] = @Explotacion) AND ([CodAsig] = @CodAsig))" DeleteCommand="DELETE FROM [TareasGenericas] WHERE [Codigo] = @Codigo" InsertCommand="INSERT INTO [TareasGenericas] ([Codigo], [Descripcion], [HEstimadas], [TipoTarea]) VALUES (@Codigo, @Descripcion, @HEstimadas, @TipoTarea)" UpdateCommand="UPDATE [TareasGenericas] SET [Descripcion] = @Descripcion, [HEstimadas] = @HEstimadas, [TipoTarea] = @TipoTarea WHERE [Codigo] = @Codigo">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" SelectCommand="SELECT [Codigo], [Descripcion], [HEstimadas], [TipoTarea] FROM [TareasGenericas] WHERE (([Explotacion] = @Explotacion) AND ([CodAsig] = @CodAsig) and codigo not in (SELECT  CodTarea FROM EstudiantesTareas WHERE EstudiantesTareas.Email=@email))" DeleteCommand="DELETE FROM [TareasGenericas] WHERE [Codigo] = @Codigo" InsertCommand="INSERT INTO [TareasGenericas] ([Codigo], [Descripcion], [HEstimadas], [TipoTarea]) VALUES (@Codigo, @Descripcion, @HEstimadas, @TipoTarea)" UpdateCommand="UPDATE [TareasGenericas] SET [Descripcion] = @Descripcion, [HEstimadas] = @HEstimadas, [TipoTarea] = @TipoTarea WHERE [Codigo] = @Codigo">
                 <DeleteParameters>
                     <asp:Parameter Name="Codigo" Type="String" />
                 </DeleteParameters>
@@ -55,6 +55,7 @@ WHERE codigo in (SELECT Grupo FROM EstudiantesGrupo WHERE EstudiantesGrupo.Email
                 <SelectParameters>
                     <asp:Parameter DefaultValue="True" Name="Explotacion" Type="Boolean" />
                     <asp:ControlParameter ControlID="DropDownList1" Name="CodAsig" PropertyName="SelectedValue" Type="String" />
+                    <asp:SessionParameter DefaultValue="" Name="email" SessionField="Correo" />
                 </SelectParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="Descripcion" Type="String" />

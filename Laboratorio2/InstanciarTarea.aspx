@@ -53,6 +53,8 @@
                     <asp:SessionParameter Name="Email" SessionField="Correo" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
+            <br />
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/TareasAlumno.aspx">Volver atrás</asp:HyperLink>
         </div>
     </form>
 </body>
