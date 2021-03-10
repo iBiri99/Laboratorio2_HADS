@@ -34,5 +34,10 @@ namespace Laboratorio2
         {
 
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("~/InstanciarTarea.aspx?codigo="+ GridView1.SelectedRow.Cells[1].Text + "&he="+ GridView1.SelectedRow.Cells[3].Text);
+        }
     }
 }
