@@ -332,5 +332,31 @@ namespace AccesoADatos
             }
         }
 
+        public int verTareaSiRealizada(String cod, String correo)
+        {
+            command = new SqlCommand("Select count(*) from EstudiantesTareas where email=@email and CodTarea=@cod" , cnn);
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = correo;
+            command.Parameters.Add("@cod", System.Data.SqlDbType.VarChar);
+            command.Parameters["@cod"].Value = cod;
+            return (int)command.ExecuteScalar();//Devolverá cuantos ha encontrado.
+        }
+
+        public int InstanciarTareaAlumno(String cod, String correo, String horasReales,String horasEstimadas)
+        {
+            command = new SqlCommand("INSERT into EstudiantesTareas(Email, CodTarea, HEstimadas, HReales) Values(@email, @cod,@esti, @real) ", cnn);
+
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = correo;
+            command.Parameters.Add("@cod", System.Data.SqlDbType.VarChar);
+            command.Parameters["@cod"].Value = cod;
+            command.Parameters.Add("@esti", System.Data.SqlDbType.Int);
+            command.Parameters["@esti"].Value = horasEstimadas;
+            command.Parameters.Add("@real", System.Data.SqlDbType.Int);
+            command.Parameters["@real"].Value = horasReales;
+            int resul = (int)command.ExecuteNonQuery();
+            return resul;//Devolverá si se ha realizado correctamente.
+        }
+
     }
 }
