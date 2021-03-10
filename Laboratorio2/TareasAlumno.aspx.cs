@@ -39,5 +39,11 @@ namespace Laboratorio2
         {
             Response.Redirect("~/InstanciarTarea.aspx?codigo="+ GridView1.SelectedRow.Cells[1].Text + "&he="+ GridView1.SelectedRow.Cells[3].Text);
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/Inicio.aspx");
+        }
     }
 }

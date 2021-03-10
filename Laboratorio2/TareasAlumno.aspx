@@ -6,10 +6,22 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 560px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div style="height: 542px">
+            <div style="height: 67px; background-color: #C0C0C0; color: #000000;">
+                <p class="auto-style1">
+                    Alumnos gestion de tareas</p>
+                <p class="auto-style1">
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cerrar sesión" />
+                </p>
+            </div>
             <br />
             Asignaturas:<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT codigoasig FROM GruposClase
 WHERE codigo in (SELECT Grupo FROM EstudiantesGrupo WHERE EstudiantesGrupo.Email = @email)">
@@ -19,6 +31,7 @@ WHERE codigo in (SELECT Grupo FROM EstudiantesGrupo WHERE EstudiantesGrupo.Email
             </asp:SqlDataSource>
             <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="codigoasig" DataValueField="codigoasig" Height="26px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="162px">
             </asp:DropDownList>
+            <br />
             <br />
             <div style="height: 278px" runat="server" id="div2">
                 Tareas a realizar<asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Codigo" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" Height="210px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="526px" emptydatatext="No hay tareas!">

@@ -29,7 +29,7 @@
             </div>
             <br />
             Tareas ya realizadas:<br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Email,CodTarea" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="196px" Width="360px">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Email,CodTarea" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="218px" Width="438px">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Email" HeaderText="Email" ReadOnly="True" SortExpression="Email" />
