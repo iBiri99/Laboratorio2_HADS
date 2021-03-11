@@ -73,6 +73,7 @@
     <Content Include="Profesor.aspx" />
     <Content Include="TareasAlumno.aspx" />
     <Content Include="TareasProfesor.aspx" />
+    <Content Include="tipos-de-becas-y-ayudas-para-universitarios.jpg" />
     <Content Include="Web.config" />
     <Content Include="Inicio.aspx" />
     <Content Include="Confirmar.aspx" />
