@@ -41,7 +41,7 @@
             Tipo Tarea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1" DataTextField="TipoTarea" DataValueField="TipoTarea" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" SelectCommand="SELECT [TipoTarea] FROM [TareasGenericas]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" SelectCommand="SELECT Distinct [TipoTarea] FROM [TareasGenericas]"></asp:SqlDataSource>
         </p>
         <p>
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Añadir Tarea" />

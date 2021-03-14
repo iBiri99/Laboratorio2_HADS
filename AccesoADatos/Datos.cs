@@ -304,7 +304,7 @@ namespace AccesoADatos
             command.Parameters["@hora"].Value = horas;
 
             command.Parameters.Add("@explotacion", System.Data.SqlDbType.Bit);
-            command.Parameters["@explotacion"].Value = false;
+            command.Parameters["@explotacion"].Value = true;
 
             command.Parameters.Add("@tipoTarea", System.Data.SqlDbType.VarChar);
             command.Parameters["@tipoTarea"].Value = tipoDeTarea;
