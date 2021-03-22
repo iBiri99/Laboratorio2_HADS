@@ -9,14 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoADatos", "AccesoADato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnvioCorreo", "EnvioCorreo\EnvioCorreo.csproj", "{242E9E76-BBD2-472B-B88F-D40F383F93C4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App_Data", "App_Data", "{0CB0E23D-7BF5-4036-8E81-7CE14FF1A1FA}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Universidad\HAS.xml = ..\..\..\Universidad\HAS.xml
-		..\..\..\Universidad\SEG.xml = ..\..\..\Universidad\SEG.xml
-		..\..\..\Universidad\tareas.xsd = ..\..\..\Universidad\tareas.xsd
-		..\..\..\Universidad\VerTablaTareas.xsl = ..\..\..\Universidad\VerTablaTareas.xsl
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

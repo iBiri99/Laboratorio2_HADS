@@ -15,7 +15,7 @@
             <p>
                 Seleccionar asignaturas a importar:</p>
             <p>
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="asig" DataTextField="codigoasig" DataValueField="codigoasig" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="asig" DataTextField="codigoasig" DataValueField="codigoasig" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="asig" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" SelectCommand="SELECT codigoasig FROM GruposClase
 WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.Email = @email)">
@@ -24,14 +24,12 @@ WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.E
                     </SelectParameters>
                 </asp:SqlDataSource>
             </p>
-            <p style="margin-left: 320px">
-                Lista de tareas de las asignaturas seleccionadas</p>
             <p>
                 <asp:Xml ID="Xml1" runat="server"></asp:Xml>
             </p>
             <p>
                 &nbsp;</p>
-            <asp:Button ID="Button1" runat="server" Text="IMPORTAR XMLD" />
+            <asp:Button ID="Button1" runat="server" Text="IMPORTAR XMLD" OnClick="Button1_Click" />
             <br />
             <br />
             <br />

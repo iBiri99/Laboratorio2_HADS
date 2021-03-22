@@ -68,9 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alumno.aspx" />
+    <Content Include="App_Data\HAS.xml" />
+    <Content Include="App_Data\SEG.xml" />
+    <Content Include="App_Data\VerTablaTareas.xsl" />
     <Content Include="InsertarTarea.aspx" />
     <Content Include="InstanciarTarea.aspx" />
     <Content Include="Profesor.aspx" />
+    <Content Include="ProfesorExportar.aspx" />
     <Content Include="ProfesorImportar.aspx" />
     <Content Include="TareasAlumno.aspx" />
     <Content Include="TareasProfesor.aspx" />
@@ -110,6 +114,13 @@
     </Compile>
     <Compile Include="Profesor.aspx.designer.cs">
       <DependentUpon>Profesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfesorExportar.aspx.cs">
+      <DependentUpon>ProfesorExportar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfesorExportar.aspx.designer.cs">
+      <DependentUpon>ProfesorExportar.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfesorImportar.aspx.cs">
       <DependentUpon>ProfesorImportar.aspx</DependentUpon>
@@ -170,6 +181,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\tareas.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -188,6 +202,7 @@
       <Name>EnvioCorreo</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
