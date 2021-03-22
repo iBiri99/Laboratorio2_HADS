@@ -15,13 +15,17 @@
 <body>
     <form id="form1" runat="server">
         <div style="height: 542px">
-            <div style="height: 67px; background-color: #C0C0C0; color: #000000;">
-                <p class="auto-style1">
-                    Alumnos gestion de tareas</p>
-                <p class="auto-style1">
+        <div style="height: 134px; width: 1298px; margin-left: 9px; background-color: #C0C0C0; font-size: 23px; color: #000000; text-align: inherit; vertical-align: middle;">
+            <p style="margin-left: 560px">
+                ALUMNOS</p>
+            <p style="margin-left: 520px">
+                GESTIÓN DE TAREAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cerrar sesión" />
-                </p>
-            </div>
+            </p>
+            <p style="margin-left: 560px">
+                GENÉRICOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </p>
+        </div>
             <br />
             Asignaturas:<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT codigoasig FROM GruposClase
 WHERE codigo in (SELECT Grupo FROM EstudiantesGrupo WHERE EstudiantesGrupo.Email = @email)">
