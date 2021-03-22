@@ -71,6 +71,7 @@
     <Content Include="InsertarTarea.aspx" />
     <Content Include="InstanciarTarea.aspx" />
     <Content Include="Profesor.aspx" />
+    <Content Include="ProfesorImportar.aspx" />
     <Content Include="TareasAlumno.aspx" />
     <Content Include="TareasProfesor.aspx" />
     <Content Include="tipos-de-becas-y-ayudas-para-universitarios.jpg" />
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="Profesor.aspx.designer.cs">
       <DependentUpon>Profesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfesorImportar.aspx.cs">
+      <DependentUpon>ProfesorImportar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfesorImportar.aspx.designer.cs">
+      <DependentUpon>ProfesorImportar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Inicio.aspx.cs">
