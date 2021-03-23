@@ -59,6 +59,7 @@ namespace Laboratorio2
             DataTable tablaDatos = new DataTable();
             tablaDatos = setData.Tables[0];
 
+            setData.CaseSensitive = false;
 
 
 
@@ -72,11 +73,8 @@ namespace Laboratorio2
             {
                 DataRow filaDato = tablaDatos.NewRow();
 
-                Debug.WriteLine("hola " + nodo.Attributes.GetNamedItem("codigo").Value);
-
                 filaDato["Codigo"] = nodo.Attributes.GetNamedItem("codigo").Value;
 
-                Debug.WriteLine("hola "+ nodo.ChildNodes[0].InnerText);
 
                 filaDato["Descripcion"] = nodo.ChildNodes[0].InnerText;
 
@@ -114,7 +112,6 @@ namespace Laboratorio2
             }
 
             
-   
 
         }
 
