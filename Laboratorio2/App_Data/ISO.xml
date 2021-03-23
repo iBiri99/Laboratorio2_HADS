@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Codigo>ISO21-Lab2</Codigo>
+    <Descripcion>Prueba</Descripcion>
+    <CodAsig>ISO</CodAsig>
+    <HEstimadas>49</HEstimadas>
+    <Explotacion>true</Explotacion>
+    <TipoTarea>Laboratorio</TipoTarea>
+  </Table>
+  <Table>
+    <Codigo>ISO-Lab1</Codigo>
+    <Descripcion>Laboratorio de SWING</Descripcion>
+    <CodAsig>ISO</CodAsig>
+    <HEstimadas>12</HEstimadas>
+    <Explotacion>true</Explotacion>
+    <TipoTarea>Laboratorio</TipoTarea>
+  </Table>
+</NewDataSet>

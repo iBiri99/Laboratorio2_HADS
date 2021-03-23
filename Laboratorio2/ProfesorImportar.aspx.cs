@@ -28,7 +28,10 @@ namespace Laboratorio2
                 Response.Redirect("~/Inicio.aspx");
             }
 
+
+
         }
+        
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -36,7 +39,7 @@ namespace Laboratorio2
             Xml1.TransformSource = Server.MapPath("App_Data/VerTablaTareas.xsl");
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)    
         {
             String select = " SELECT *  FROM TareasGenericas WHERE 1=0";
 
@@ -94,11 +97,14 @@ namespace Laboratorio2
                 
             }
 
-            int resul = datosAdaptador.Update(setData);
+            
             try
             {
-                
+
+
+                int resul = datosAdaptador.Update(setData);
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert(" + "Las tareas se han importado correctamente" + ");", true);
+                Label1.Text = "Las tareas se han importado correctamente"; 
 
             }
             catch
@@ -107,9 +113,15 @@ namespace Laboratorio2
 
             }
 
-
+            
    
 
+        }
+
+        protected void DropDownList1_DataBound1(object sender, EventArgs e)
+        {
+            Xml1.DocumentSource = Server.MapPath("App_Data\\" + DropDownList1.SelectedValue + ".xml");
+            Xml1.TransformSource = Server.MapPath("App_Data/VerTablaTareas.xsl");
         }
     }
 }

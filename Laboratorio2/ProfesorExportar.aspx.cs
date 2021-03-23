@@ -68,16 +68,13 @@ namespace Laboratorio2
             DataTable tablaDatos = new DataTable();
             tablaDatos = setData.Tables[0];
 
-            /*
 
-            DataColumn column = new DataColumn("column",typeof(String), "", MappingType.Attribute);
-            column.ColumnMapping = MappingType.Attribute;
+            tablaDatos.Columns[0].ColumnMapping = MappingType.Attribute;
 
-            // Add the column the table's columns collection.
-            tablaDatos.Columns.Add(column);
+           
 
-            */
-            setData.WriteXmlSchema(Server.MapPath("App_Data\\" + DropDownList1.SelectedValue + ".xml"));
+            
+            setData.WriteXml(Server.MapPath("App_Data\\" + DropDownList1.SelectedValue + ".xml"));
 
             
 
