@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -32,6 +33,9 @@ namespace Laboratorio2
             
             var rand = new Random();
             var numconf = (int)(rand.Next(1000000,10000000));
+
+          
+
             try
             {
                 bd = new AccesoADatos.Datos();
@@ -39,7 +43,7 @@ namespace Laboratorio2
                 int a = bd.AbrirSesion();
                 if (a == 0)
                 {
-                    resul = bd.registrar(nombre, apellidos, numconf, false, email, pass, codpass);
+                    resul = bd.registrar(nombre, apellidos, numconf, false, email, pass, codpass,DropDownList1.SelectedValue);
                 }
 
                 bd.cerrarConexion();

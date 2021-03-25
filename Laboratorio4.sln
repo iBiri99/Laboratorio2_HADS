@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoADatos", "AccesoADato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnvioCorreo", "EnvioCorreo\EnvioCorreo.csproj", "{242E9E76-BBD2-472B-B88F-D40F383F93C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encrypt", "Encrypt\Encrypt.csproj", "{6A5B58C8-47FE-4259-87C4-2E3ADD643FC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{242E9E76-BBD2-472B-B88F-D40F383F93C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{242E9E76-BBD2-472B-B88F-D40F383F93C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{242E9E76-BBD2-472B-B88F-D40F383F93C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5B58C8-47FE-4259-87C4-2E3ADD643FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5B58C8-47FE-4259-87C4-2E3ADD643FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5B58C8-47FE-4259-87C4-2E3ADD643FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5B58C8-47FE-4259-87C4-2E3ADD643FC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

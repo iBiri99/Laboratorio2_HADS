@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Encrypt;
 
 namespace AccesoADatos
 {
@@ -39,6 +40,10 @@ namespace AccesoADatos
         //Funcion que saca si el correo y la contraseña es correcta. 1= si es correcto y 0 si no lo es. 2= No esta confirmado.
         public int comprobarCorreoYContraseña(String correo, String pass)
         {
+            
+            string epass =Encrypt.Encrypt.getMD5(pass);
+            Console.WriteLine(epass);
+            pass = epass;
             command = new SqlCommand("Select count(email) from Usuarios where email=@email and Pass=@Pass", cnn);
             SqlCommand command2 = new SqlCommand("Select confirmado from Usuarios where email=@email and Pass=@Pass", cnn); //Mejorar esto.
 
@@ -169,11 +174,15 @@ namespace AccesoADatos
 
         }
 
-        public int registrar(String nombre, String apellidos, int numConf, bool confirmado, String correo, String pass, int codpass)
+        public int registrar(String nombre, String apellidos, int numConf, bool confirmado, String correo, String pass, int codpass,string tipo)
         {
+
+            String epass = Encrypt.Encrypt.getMD5(pass);
+            pass = epass;
+
             command = new SqlCommand("INSERT into Usuarios(email,nombre,apellidos,numconfir,confirmado,tipo,pass,codpass) Values(@email,@nombre,@apellidos,@numconf,@confirmado,@tipo,@pass,@codpass) ", cnn);
 
-
+            
 
 
             command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
@@ -183,7 +192,7 @@ namespace AccesoADatos
             command.Parameters["@apellidos"].Value = apellidos;
 
             command.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
-            command.Parameters["@tipo"].Value = 0; 
+            command.Parameters["@tipo"].Value = tipo; 
 
 
 
@@ -196,14 +205,18 @@ namespace AccesoADatos
             command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
             command.Parameters["@email"].Value = correo;
 
-            command.Parameters.Add("@Pass", System.Data.SqlDbType.VarChar);
-            command.Parameters["@Pass"].Value = pass;
+           
+            command.Parameters.Add("@pass", System.Data.SqlDbType.VarChar);
+            command.Parameters["@pass"].Value = epass;
+            
 
             command.Parameters.Add("@codpass", System.Data.SqlDbType.Int);
             command.Parameters["@codpass"].Value = codpass;
 
+            System.Diagnostics.Debug.WriteLine(pass);
             int resul=(int)command.ExecuteNonQuery();
-
+            System.Diagnostics.Debug.WriteLine(pass);
+            System.Diagnostics.Debug.WriteLine(resul);
             if (resul == 1)
             {
                 

@@ -75,7 +75,6 @@ namespace Laboratorio2
 
             // Add the column the table's columns collection.
             tablaDatos.Columns.Add(column);
-
             */
             setData.WriteXmlSchema(Server.MapPath("App_Data\\" + DropDownList1.SelectedValue + ".xml"));
 
