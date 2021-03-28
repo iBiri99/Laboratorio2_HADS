@@ -12,6 +12,7 @@ namespace Laboratorio2
         protected void Page_Load(object sender, EventArgs e)
         {
             //Comprobando que es alumno.
+            /*
             if (Session["Tipo"] != null)
             {
                 if (Session["Tipo"] != "Alum")
@@ -30,6 +31,7 @@ namespace Laboratorio2
                 Response.Redirect("~/Inicio.aspx");
 
             }
+            */
             //Si llega todo esta bien :)
             TextBox1.Text = Session["Correo"].ToString();
             TextBox2.Text = Request.Params["codigo"];

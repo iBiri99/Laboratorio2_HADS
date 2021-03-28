@@ -11,6 +11,7 @@ namespace Laboratorio2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             if (Session["Tipo"] != null)
             {
                 if (Session["Tipo"] != "Alum")
@@ -22,6 +23,7 @@ namespace Laboratorio2
             { //Control de que no venga directamente.
                 Response.Redirect("~/Inicio.aspx");
             }
+            */
 
         }
 

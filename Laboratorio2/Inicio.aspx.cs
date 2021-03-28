@@ -32,14 +32,25 @@ namespace Laboratorio2
                     //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
                     //Como el inicio de sesion ha sido correcto, vamos a guardar en el objeto session el correo y el tipo de usuario (Profe o alumno).
                     int tipo= bd.getTipo(Correo.Text);
+                    if (Correo.Text=="vadillo@ehu.es") //Usuario especial
+                    {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie("vadillo",false);
+                    }else if (tipo == 1)
+                    {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie("prof", false);
+                    }else if(tipo == 2)
+                    {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie("alum", false);
+                    }
+                    
                     Session["Correo"] = Correo.Text;
                     if (tipo == 1)
                     {
-                        Session["Tipo"] ="Prof";
+                        //Session["Tipo"] ="Prof";
                         Response.Redirect("~/Profesor.aspx");
                     }else if (tipo == 2)
                     {
-                        Session["Tipo"] = "Alum";
+                        //Session["Tipo"] = "Alum";
                         Response.Redirect("~/Alumno.aspx");
                     }
                     else

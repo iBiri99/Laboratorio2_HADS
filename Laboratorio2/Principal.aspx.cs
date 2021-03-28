@@ -11,6 +11,7 @@ namespace Laboratorio2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             if(Session["Correo"] != null)
             { //El correo esta en la session,.
                 if (Session["Tipo"] == "Prof")
@@ -25,6 +26,7 @@ namespace Laboratorio2
 
                 }
             }
+            */
         }
     }
 }
