@@ -47,11 +47,11 @@ namespace Laboratorio2
                     if (tipo == 1)
                     {
                         //Session["Tipo"] ="Prof";
-                        Response.Redirect("~/Profesor.aspx");
+                        Response.Redirect("~/Profesor/Profesor.aspx");
                     }else if (tipo == 2)
                     {
                         //Session["Tipo"] = "Alum";
-                        Response.Redirect("~/Alumno.aspx");
+                        Response.Redirect("~/Alumno/Alumno.aspx");
                     }
                     else
                     {

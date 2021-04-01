@@ -54,7 +54,7 @@
                 </SelectParameters>
             </asp:SqlDataSource>
             <br />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/TareasAlumno.aspx">Volver atrás</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Alumno/TareasAlumno.aspx">Volver atrás</asp:HyperLink>
         </div>
     </form>
 </body>

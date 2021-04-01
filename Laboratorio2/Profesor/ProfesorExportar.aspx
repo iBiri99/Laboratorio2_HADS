@@ -31,7 +31,7 @@ WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.E
         </p>
         <asp:Button ID="Button1" runat="server" Height="69px" OnClick="Button1_Click" Text="EXPORTAR XML" />
         <br />
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor.aspx">Menu Profesor</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor/Profesor.aspx">Menu Profesor</asp:HyperLink>
     </form>
 </body>
 </html>

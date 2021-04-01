@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using System.Diagnostics;
+using System.IO;
 
 namespace Laboratorio2
 {
@@ -16,26 +17,22 @@ namespace Laboratorio2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            if (Session["Tipo"] != null)
-            {
-                if (Session["Tipo"] != "Prof")
-                {
-                    Response.Redirect("~/Inicio.aspx");
-                }
-            }
-            else
-            { //Control de que no venga directamente.
-                Response.Redirect("~/Inicio.aspx");
-            }
-            */
+
         }
         
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Xml1.DocumentSource = Server.MapPath("App_Data\\" + DropDownList1.SelectedValue + ".xml");
-            Xml1.TransformSource = Server.MapPath("App_Data/VerTablaTareas.xsl");
+            try {
+                XmlDocument xml2 = new XmlDocument();
+                xml2.Load(Server.MapPath("..\\App_Data\\" + DropDownList1.SelectedValue + ".xml"));
+                Xml1.DocumentSource = Server.MapPath("..\\App_Data\\" + DropDownList1.SelectedValue + ".xml");
+                Xml1.TransformSource = Server.MapPath("..\\App_Data/VerTablaTareas.xsl");
+            }
+            catch(Exception ex)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert(" + "El archivo no se ha encontrado!" + ");", true);
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)    
@@ -63,7 +60,7 @@ namespace Laboratorio2
 
 
             XmlDocument xml = new XmlDocument();
-            xml.Load(Server.MapPath("App_Data\\" + DropDownList1.SelectedValue + ".xml"));
+            xml.Load(Server.MapPath("..\\App_Data\\" + DropDownList1.SelectedValue + ".xml"));
             
 
             XmlNodeList listaTareas = xml.GetElementsByTagName("tarea");
@@ -116,8 +113,19 @@ namespace Laboratorio2
 
         protected void DropDownList1_DataBound1(object sender, EventArgs e)
         {
-            Xml1.DocumentSource = Server.MapPath("App_Data\\" + DropDownList1.SelectedValue + ".xml");
-            Xml1.TransformSource = Server.MapPath("App_Data/VerTablaTareas.xsl");
+            try
+            {
+                XmlDocument xml2 = new XmlDocument();
+                xml2.Load(Server.MapPath("..\\App_Data\\" + DropDownList1.SelectedValue + ".xml"));
+                
+                Xml1.DocumentSource = Server.MapPath("..\\App_Data\\" + DropDownList1.SelectedValue + ".xml");
+                Xml1.TransformSource = Server.MapPath("..\\App_Data/VerTablaTareas.xsl");
+            }
+            catch(Exception ex)
+            {
+                
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert(" + "El archivo no se ha encontrado!" + ");", true);
+            }
         }
     }
 }

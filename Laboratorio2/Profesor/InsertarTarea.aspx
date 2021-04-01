@@ -52,7 +52,7 @@
             <br />
             <br />
             <br />
-            <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="True" Font-Size="X-Large" NavigateUrl="~/TareasProfesor.aspx">Ver Tareas</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="True" Font-Size="X-Large" NavigateUrl="~/Profesor/TareasProfesor.aspx">Ver Tareas</asp:HyperLink>
         </div>
     </form>
 </body>

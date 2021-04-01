@@ -40,7 +40,7 @@
             <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/CambiarPass.aspx">Cambiar contraseña</asp:HyperLink>
         </div>
         <div style="margin-left: 80px">
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" style="height: 26px" />
         </div>
         <div style="margin-left: 320px">
             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/registro.aspx">Registrar</asp:HyperLink>

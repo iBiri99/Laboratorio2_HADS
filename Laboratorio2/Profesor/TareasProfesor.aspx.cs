@@ -7,14 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace Laboratorio2
 {
-    public partial class Alumno : System.Web.UI.Page
+    public partial class TareasProfesor : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             /*
             if (Session["Tipo"] != null)
             {
-                if (Session["Tipo"] != "Alum")
+                if (Session["Tipo"] != "Prof")
                 {
                     Response.Redirect("~/Inicio.aspx");
                 }
@@ -27,10 +27,19 @@ namespace Laboratorio2
 
         }
 
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session.Clear();
-            Response.Redirect("~/Inicio.aspx");
+            Response.Redirect("~/Profesor/InsertarTarea.aspx");
         }
     }
 }
