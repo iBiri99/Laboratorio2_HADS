@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TareasProfesor.aspx.cs" Inherits="Laboratorio2.TareasProfesor" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,6 +9,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
+
+     <script>
+        function tareasAJAX() {
+            if (XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+                var asignatura = document.getElementById("DropDownList1").value;
+                xhr.open('GET', '../AJAX/GridView.aspx?asig=' + asignatura, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById('GridView1').innerHTML = xhr.responseText;
+                    }
+                }
+                xhr.send('');
+            } //cierra if xmlhttprequest
+         } //cierra la función
+
+         setInterval(function () {
+             if (XMLHttpRequest) {
+                 xhr = new XMLHttpRequest();
+                 xhr.open('GET', '../AJAX/UsuariosConectados.aspx', true);
+                 xhr.onreadystatechange = function () {
+                     if (xhr.readyState == 4 && xhr.status == 200) {
+                         document.getElementById('Usuarios').innerHTML = xhr.responseText;
+                     }
+                 }
+                 xhr.send('');
+             } //cierra if xmlhttprequest    
+         }, 1000);
+
+     </script>
+
 <body>
     <form id="form1" runat="server">
         <div style="height: 134px; width: 1298px; margin-left: 9px; background-color: #C0C0C0; font-size: 23px; color: #000000; text-align: inherit; vertical-align: middle;">
@@ -14,7 +47,7 @@
                 PROFESOR</p>
             <p style="margin-left: 520px">
                 GESTIÓN DE TAREAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Inicio.aspx">Cerrar Sesión</asp:HyperLink>
+                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Cerrar sesión" />
             </p>
             <p style="margin-left: 560px">
                 GENÉRICOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -22,7 +55,7 @@
         </div>
         <p style="margin-top: 16px">
             Seleccionar asignatura:</p>
-        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="codigoasig" DataValueField="codigoasig" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="codigoasig" DataValueField="codigoasig"  onChange="tareasAJAX();" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" SelectCommand="SELECT codigoasig FROM GruposClase
 WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.Email = @email)
@@ -72,9 +105,9 @@ WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.E
         </p>
         <p>
             &nbsp;</p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Codigo" DataSourceID="asignaturas" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" style="margin-right: 2px">
+
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Codigo" DataSourceID="asignaturas" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-right: 2px">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="Codigo" HeaderText="Codigo" ReadOnly="True" SortExpression="Codigo" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
                 <asp:BoundField DataField="CodAsig" HeaderText="CodAsig" SortExpression="CodAsig" />
@@ -83,6 +116,9 @@ WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.E
                 <asp:BoundField DataField="TipoTarea" HeaderText="TipoTarea" SortExpression="TipoTarea" />
             </Columns>
         </asp:GridView>
-    </form>
+        <br />
+        Profesores:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alumnos:</form>
+    <div id="Usuarios">
+    </div>
 </body>
 </html>

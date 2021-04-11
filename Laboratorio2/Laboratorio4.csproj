@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -79,12 +82,14 @@
     <Content Include="Alumno\TareasAlumno.aspx" />
     <Content Include="Profesor\TareasProfesor.aspx" />
     <Content Include="tipos-de-becas-y-ayudas-para-universitarios.jpg" />
+    <Content Include="AJAX\UsuariosConectados.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio.aspx" />
     <Content Include="Confirmar.aspx" />
     <Content Include="registro.aspx" />
     <Content Include="CambiarPass.aspx" />
     <Content Include="Principal.aspx" />
+    <Content Include="AJAX\GridView.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alumno\Alumno.aspx.cs">
@@ -178,6 +183,20 @@
     </Compile>
     <Compile Include="Profesor\TareasProfesor.aspx.designer.cs">
       <DependentUpon>TareasProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AJAX\GridView.aspx.cs">
+      <DependentUpon>GridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AJAX\GridView.aspx.designer.cs">
+      <DependentUpon>GridView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AJAX\UsuariosConectados.aspx.cs">
+      <DependentUpon>UsuariosConectados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AJAX\UsuariosConectados.aspx.designer.cs">
+      <DependentUpon>UsuariosConectados.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

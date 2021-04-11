@@ -41,5 +41,16 @@ namespace Laboratorio2
         {
             Response.Redirect("~/Profesor/InsertarTarea.aspx");
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            List<string> Profesores = (List<string>)Application["profesores"];
+            Profesores.Remove((String)Session["Correo"]);
+            Application["profesores"] = Profesores;
+                Session.Clear();
+            System.Web.Security.FormsAuthentication.SignOut();
+            Response.Redirect("~/Inicio.aspx");
+            
+        }
     }
 }

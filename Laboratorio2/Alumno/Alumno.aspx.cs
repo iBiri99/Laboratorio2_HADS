@@ -29,6 +29,9 @@ namespace Laboratorio2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            List<string> Alumnos = (List<string>)Application["alumnos"];
+            Alumnos.Remove((String)Session["Correo"]);
+            Application["alumnos"] = Alumnos;
             Session.Clear();
             System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("~/Inicio.aspx");

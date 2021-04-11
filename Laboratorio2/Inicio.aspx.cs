@@ -35,12 +35,53 @@ namespace Laboratorio2
                     if (Correo.Text=="vadillo@ehu.es") //Usuario especial
                     {
                         System.Web.Security.FormsAuthentication.SetAuthCookie("vadillo",false);
+                        if (Application["profesores"]!= null)
+                        {
+                            List<string> Profesores = (List<string>)Application["profesores"];
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+                        }
+                        else
+                        {
+                            List<string> Profesores = new List<string>();
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+
+                        }
+                        
                     }else if (tipo == 1)
                     {
                         System.Web.Security.FormsAuthentication.SetAuthCookie("prof", false);
-                    }else if(tipo == 2)
+                        if (Application["profesores"] != null)
+                        {
+                            List<string> Profesores = (List<string>)Application["profesores"];
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+                        }
+                        else
+                        {
+                            List<string> Profesores = new List<string>();
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+
+                        }
+                    }
+                    else if(tipo == 2)
                     {
                         System.Web.Security.FormsAuthentication.SetAuthCookie("alum", false);
+                        if (Application["alumnos"] != null)
+                        {
+                            List<string> alumnos = (List<string>)Application["alumnos"];
+                            alumnos.Add(Correo.Text);
+                            Application["alumnos"] = alumnos;
+                        }
+                        else
+                        {
+                            List<string> alumnos = new List<string>();
+                            alumnos.Add(Correo.Text);
+                            Application["alumnos"] = alumnos;
+
+                        }
                     }
                     
                     Session["Correo"] = Correo.Text;
