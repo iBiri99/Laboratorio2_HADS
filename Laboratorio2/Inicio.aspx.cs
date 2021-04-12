@@ -21,14 +21,84 @@ namespace Laboratorio2
         {
             
             bd = new AccesoADatos.Datos();
-            int a=bd.AbrirSesion();
+            int a = bd.AbrirSesion();
             if (a == 0)
             {
                 int b = bd.comprobarCorreoYContraseña(Correo.Text,Contra.Text);
+                
                 if (b == 1)//El inicio de sesion ha sido correcto!
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
-                    Response.Redirect("http://www.google.com");
+                    
+                    //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inicio de sesion correcto.');", true);
+                    //Como el inicio de sesion ha sido correcto, vamos a guardar en el objeto session el correo y el tipo de usuario (Profe o alumno).
+                    int tipo= bd.getTipo(Correo.Text);
+                    if (Correo.Text=="vadillo@ehu.es") //Usuario especial
+                    {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie("vadillo",false);
+                        if (Application["profesores"]!= null)
+                        {
+                            List<string> Profesores = (List<string>)Application["profesores"];
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+                        }
+                        else
+                        {
+                            List<string> Profesores = new List<string>();
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+
+                        }
+                        
+                    }else if (tipo == 1)
+                    {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie("prof", false);
+                        if (Application["profesores"] != null)
+                        {
+                            List<string> Profesores = (List<string>)Application["profesores"];
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+                        }
+                        else
+                        {
+                            List<string> Profesores = new List<string>();
+                            Profesores.Add(Correo.Text);
+                            Application["profesores"] = Profesores;
+
+                        }
+                    }
+                    else if(tipo == 2)
+                    {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie("alum", false);
+                        if (Application["alumnos"] != null)
+                        {
+                            List<string> alumnos = (List<string>)Application["alumnos"];
+                            alumnos.Add(Correo.Text);
+                            Application["alumnos"] = alumnos;
+                        }
+                        else
+                        {
+                            List<string> alumnos = new List<string>();
+                            alumnos.Add(Correo.Text);
+                            Application["alumnos"] = alumnos;
+
+                        }
+                    }
+                    
+                    Session["Correo"] = Correo.Text;
+                    if (tipo == 1)
+                    {
+                        //Session["Tipo"] ="Prof";
+                        Response.Redirect("~/Profesor/Profesor.aspx");
+                    }else if (tipo == 2)
+                    {
+                        //Session["Tipo"] = "Alum";
+                        Response.Redirect("~/Alumno/Alumno.aspx");
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('No se ha podido determinar el tipo de usuario');", true);
+                    }
+                    
 
                 }
                 else if(b==2)
@@ -48,5 +118,9 @@ namespace Laboratorio2
             bd.cerrarConexion();
         }
 
+        protected void Correo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

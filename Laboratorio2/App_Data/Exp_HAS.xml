@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table Codigo="HAS20-Lab1">
+    <Descripcion>Lab componentes</Descripcion>
+    <CodAsig>HAS</CodAsig>
+    <HEstimadas>6</HEstimadas>
+    <Explotacion>true</Explotacion>
+    <TipoTarea>Laboratorio</TipoTarea>
+  </Table>
+  <Table Codigo="HAS20-Lab10">
+    <Descripcion>Sobre django</Descripcion>
+    <CodAsig>HAS</CodAsig>
+    <HEstimadas>10</HEstimadas>
+    <Explotacion>true</Explotacion>
+    <TipoTarea>Laboratorio</TipoTarea>
+  </Table>
+  <Table Codigo="HAS20-Lab2">
+    <Descripcion>Web Forms</Descripcion>
+    <CodAsig>HAS</CodAsig>
+    <HEstimadas>12</HEstimadas>
+    <Explotacion>true</Explotacion>
+    <TipoTarea>Laboratorio</TipoTarea>
+  </Table>
+  <Table Codigo="HAS20-Lab4">
+    <Descripcion>Laboratorio sobre XML</Descripcion>
+    <CodAsig>HAS</CodAsig>
+    <HEstimadas>12</HEstimadas>
+    <Explotacion>true</Explotacion>
+    <TipoTarea>Laboratorio</TipoTarea>
+  </Table>
+  <Table Codigo="HAS20-Test1">
+    <Descripcion>Test 1 de la asignatura</Descripcion>
+    <CodAsig>HAS</CodAsig>
+    <HEstimadas>1</HEstimadas>
+    <Explotacion>false</Explotacion>
+    <TipoTarea>Examen</TipoTarea>
+  </Table>
+</NewDataSet>

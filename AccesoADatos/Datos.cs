@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Encrypt;
 
 namespace AccesoADatos
 {
@@ -39,6 +40,10 @@ namespace AccesoADatos
         //Funcion que saca si el correo y la contraseña es correcta. 1= si es correcto y 0 si no lo es. 2= No esta confirmado.
         public int comprobarCorreoYContraseña(String correo, String pass)
         {
+            
+            string epass =Encrypt.Encrypt.getMD5(pass);
+            Console.WriteLine(epass);
+            pass = epass;
             command = new SqlCommand("Select count(email) from Usuarios where email=@email and Pass=@Pass", cnn);
             SqlCommand command2 = new SqlCommand("Select confirmado from Usuarios where email=@email and Pass=@Pass", cnn); //Mejorar esto.
 
@@ -169,11 +174,15 @@ namespace AccesoADatos
 
         }
 
-        public int registrar(String nombre, String apellidos, int numConf, bool confirmado, String correo, String pass, int codpass)
+        public int registrar(String nombre, String apellidos, int numConf, bool confirmado, String correo, String pass, int codpass,string tipo)
         {
+
+            String epass = Encrypt.Encrypt.getMD5(pass);
+            pass = epass;
+
             command = new SqlCommand("INSERT into Usuarios(email,nombre,apellidos,numconfir,confirmado,tipo,pass,codpass) Values(@email,@nombre,@apellidos,@numconf,@confirmado,@tipo,@pass,@codpass) ", cnn);
 
-
+            
 
 
             command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
@@ -183,7 +192,7 @@ namespace AccesoADatos
             command.Parameters["@apellidos"].Value = apellidos;
 
             command.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
-            command.Parameters["@tipo"].Value = 0; 
+            command.Parameters["@tipo"].Value = tipo; 
 
 
 
@@ -196,14 +205,18 @@ namespace AccesoADatos
             command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
             command.Parameters["@email"].Value = correo;
 
-            command.Parameters.Add("@Pass", System.Data.SqlDbType.VarChar);
-            command.Parameters["@Pass"].Value = pass;
+           
+            command.Parameters.Add("@pass", System.Data.SqlDbType.VarChar);
+            command.Parameters["@pass"].Value = epass;
+            
 
             command.Parameters.Add("@codpass", System.Data.SqlDbType.Int);
             command.Parameters["@codpass"].Value = codpass;
 
+            System.Diagnostics.Debug.WriteLine(pass);
             int resul=(int)command.ExecuteNonQuery();
-
+            System.Diagnostics.Debug.WriteLine(pass);
+            System.Diagnostics.Debug.WriteLine(resul);
             if (resul == 1)
             {
                 
@@ -250,6 +263,74 @@ namespace AccesoADatos
             command3.Parameters["@email"].Value = email;
             command3.ExecuteNonQuery();
         }
+        public int getTipo(string email)
+        {
+            SqlCommand command = new SqlCommand("SELECT tipo FROM Usuarios WHERE email=@email;", cnn);
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = email;
+            string resul;
+            try
+            {
+                var sol = command.ExecuteReader();
+                sol.Read();
+                resul = sol.GetString(0);
+                sol.Close();
+                
+                if (resul == "Profesor")
+                {
+                    return 1;
+                }
+                else if (resul == "Alumno")
+                {
+                    return 2;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch
+            {
+                return 3;
+            }
+            
+
+          
+
+        }
+
+
+        public int crearTarea(string codigo, string descripcion, string asignatura, int horas, string tipoDeTarea)
+        {
+            command = new SqlCommand("INSERT into TareasGenericas(Codigo, Descripcion, CodAsig, HEstimadas, Explotacion, TipoTarea ) Values(@codigo, @descripcion,@codAsig, @hora, @explotacion, @tipoTarea) ", cnn);
+            
+            command.Parameters.Add("@codigo", System.Data.SqlDbType.NVarChar);
+            command.Parameters["@codigo"].Value = codigo;
+
+            command.Parameters.Add("@descripcion", System.Data.SqlDbType.NVarChar);
+            command.Parameters["@descripcion"].Value = descripcion;
+
+            command.Parameters.Add("@codAsig", System.Data.SqlDbType.NVarChar);
+            command.Parameters["@codAsig"].Value = asignatura;
+
+            command.Parameters.Add("@hora", System.Data.SqlDbType.Int);
+            command.Parameters["@hora"].Value = horas;
+
+            command.Parameters.Add("@explotacion", System.Data.SqlDbType.Bit);
+            command.Parameters["@explotacion"].Value = true;
+
+            command.Parameters.Add("@tipoTarea", System.Data.SqlDbType.VarChar);
+            command.Parameters["@tipoTarea"].Value = tipoDeTarea;
+
+            int resul = (int)command.ExecuteNonQuery();
+
+            if (resul == 1)
+            {
+                //falta mejorar el sistema de gestion de errores
+            }
+            return resul;
+
+        }
 
         public int cerrarConexion()
         {
@@ -262,6 +343,32 @@ namespace AccesoADatos
             {
                 return 1;
             }
+        }
+
+        public int verTareaSiRealizada(String cod, String correo)
+        {
+            command = new SqlCommand("Select count(*) from EstudiantesTareas where email=@email and CodTarea=@cod" , cnn);
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = correo;
+            command.Parameters.Add("@cod", System.Data.SqlDbType.VarChar);
+            command.Parameters["@cod"].Value = cod;
+            return (int)command.ExecuteScalar();//Devolverá cuantos ha encontrado.
+        }
+
+        public int InstanciarTareaAlumno(String cod, String correo, String horasReales,String horasEstimadas)
+        {
+            command = new SqlCommand("INSERT into EstudiantesTareas(Email, CodTarea, HEstimadas, HReales) Values(@email, @cod,@esti, @real) ", cnn);
+
+            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+            command.Parameters["@email"].Value = correo;
+            command.Parameters.Add("@cod", System.Data.SqlDbType.VarChar);
+            command.Parameters["@cod"].Value = cod;
+            command.Parameters.Add("@esti", System.Data.SqlDbType.Int);
+            command.Parameters["@esti"].Value = horasEstimadas;
+            command.Parameters.Add("@real", System.Data.SqlDbType.Int);
+            command.Parameters["@real"].Value = horasReales;
+            int resul = (int)command.ExecuteNonQuery();
+            return resul;//Devolverá si se ha realizado correctamente.
         }
 
     }

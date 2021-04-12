@@ -21,7 +21,7 @@
         <strong><span class="auto-style1">Inicio de sesión:</span></strong><br class="auto-style2" />
         <br class="auto-style2" />
         Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email" required="true"></asp:TextBox>
+        <asp:TextBox ID="Correo" runat="server" AutoCompleteType="Email" required="true" OnTextChanged="Correo_TextChanged"></asp:TextBox>
         <br />
         <br class="auto-style2" />
         <div style="margin-left: 40px">
@@ -33,14 +33,14 @@
         <br class="auto-style2" />
         <br class="auto-style2" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="Contra" ErrorMessage="La contraseña tiene que tener 6 digitos por lo menos." ValidationExpression="^.{6,}$"></asp:RegularExpressionValidator>
+        &nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="Contra" ErrorMessage="La contraseña tiene que tener 4 digitos por lo menos." ValidationExpression="^.{4,}$"></asp:RegularExpressionValidator>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br class="auto-style2" />
         <div style="margin-left: 320px">
             <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/CambiarPass.aspx">Cambiar contraseña</asp:HyperLink>
         </div>
         <div style="margin-left: 80px">
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" style="height: 26px" />
         </div>
         <div style="margin-left: 320px">
             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/registro.aspx">Registrar</asp:HyperLink>
