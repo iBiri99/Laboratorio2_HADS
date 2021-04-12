@@ -11,7 +11,7 @@
 </head>
 
      <script>
-        function tareasAJAX() {
+        function AJAX() {
             if (XMLHttpRequest) {
                 xhr = new XMLHttpRequest();
                 var asignatura = document.getElementById("DropDownList1").value;
@@ -22,8 +22,8 @@
                     }
                 }
                 xhr.send('');
-            } //cierra if xmlhttprequest
-         } //cierra la función
+            }
+         }
 
          setInterval(function () {
              if (XMLHttpRequest) {
@@ -35,7 +35,7 @@
                      }
                  }
                  xhr.send('');
-             } //cierra if xmlhttprequest    
+             }  
          }, 1000);
 
      </script>
@@ -55,7 +55,7 @@
         </div>
         <p style="margin-top: 16px">
             Seleccionar asignatura:</p>
-        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="codigoasig" DataValueField="codigoasig"  onChange="tareasAJAX();" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="codigoasig" DataValueField="codigoasig"  onChange="AJAX();" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-15ConnectionString %>" SelectCommand="SELECT codigoasig FROM GruposClase
 WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.Email = @email)
@@ -117,7 +117,8 @@ WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.E
             </Columns>
         </asp:GridView>
         <br />
-        Profesores:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alumnos:</form>
+        Profesores:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alumnos:<br />
+    </form>
     <div id="Usuarios">
     </div>
 </body>

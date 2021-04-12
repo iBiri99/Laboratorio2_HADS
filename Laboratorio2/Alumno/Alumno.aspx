@@ -12,9 +12,23 @@
         }
     </style>
 </head>
+     <script>
+             setInterval(function () {
+             if (XMLHttpRequest) {
+                 xhr = new XMLHttpRequest();
+                 xhr.open('GET', '../AJAX/UsuariosConectados.aspx', true);
+                 xhr.onreadystatechange = function () {
+                     if (xhr.readyState == 4 && xhr.status == 200) {
+                         document.getElementById('Usuarios').innerHTML = xhr.responseText;
+                     }
+                 }
+                 xhr.send('');
+             }  
+             }, 1000);
+         </script>
 <body>
     <form id="form1" runat="server">
-        <div style="height: 469px">
+        <div style="height: 660px">
             <div style="height: 67px; background-color: #C0C0C0; color: #000000;">
                 <p class="auto-style1">
                     Alumnos gestion de tareas</p>
@@ -27,9 +41,14 @@
                     <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Image ID="Image1" runat="server" ImageUrl="~/tipos-de-becas-y-ayudas-para-universitarios.jpg" />
+                    <br />
+                    <br />
+        Profesores:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alumnos:<br />
                 </div>
             </div>
         </div>
     </form>
-</body>
+                    <div id="Usuarios">
+    </div>
+            </body>
 </html>
