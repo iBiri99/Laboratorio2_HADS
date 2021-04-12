@@ -30,8 +30,6 @@ namespace Laboratorio2
             {
                 alumnos = new List<string>();
             }
-            ListBox1.Items.Add("");
-            ListBox2.Items.Add("");
             foreach (String element in Profesores)
             {
                 ListBox1.Items.Add(element);

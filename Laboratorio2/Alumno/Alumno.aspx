@@ -24,7 +24,7 @@
                  }
                  xhr.send('');
              }  
-             }, 1000);
+             }, 5000);
          </script>
 <body>
     <form id="form1" runat="server">
