@@ -30,14 +30,20 @@ namespace Laboratorio2
             {
                 alumnos = new List<string>();
             }
+            int prof = 0;
             foreach (String element in Profesores)
             {
                 ListBox1.Items.Add(element);
+                prof++;
             }
+            int al = 0;
             foreach (String element in alumnos)
             {
                 ListBox2.Items.Add(element);
+                al++;
             }
+            Label1.Text = "Profesores conectados: " + prof;
+            Label2.Text = "Alumnos conectados: " + al;
         }
     }
 }

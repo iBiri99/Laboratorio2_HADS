@@ -43,7 +43,6 @@
                     <asp:Image ID="Image1" runat="server" ImageUrl="~/tipos-de-becas-y-ayudas-para-universitarios.jpg" />
                     <br />
                     <br />
-        Profesores:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alumnos:<br />
                 </div>
             </div>
         </div>

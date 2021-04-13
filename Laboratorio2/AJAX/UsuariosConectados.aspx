@@ -10,6 +10,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         </div>
         <asp:ListBox ID="ListBox1" runat="server" Height="218px" Width="203px"></asp:ListBox>
         <asp:ListBox ID="ListBox2" runat="server" Height="218px" Width="203px"></asp:ListBox>
