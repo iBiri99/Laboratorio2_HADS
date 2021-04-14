@@ -10,22 +10,6 @@
     <title></title>
 </head>
 
-     <script>
-        function AJAX() {
-            if (XMLHttpRequest) {
-                xhr = new XMLHttpRequest();
-                var asignatura = document.getElementById("DropDownList1").value;
-                xhr.open('GET', '../AJAX/GridView.aspx?asig=' + asignatura, true);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById('GridView1').innerHTML = xhr.responseText;
-                    }
-                }
-                xhr.send('');
-            }
-         }
-
-     </script>
 
 <body>
     <form id="form1" runat="server">

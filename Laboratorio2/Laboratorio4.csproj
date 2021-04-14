@@ -88,7 +88,6 @@
     <Content Include="registro.aspx" />
     <Content Include="CambiarPass.aspx" />
     <Content Include="Principal.aspx" />
-    <Content Include="AJAX\GridView.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alumno\Alumno.aspx.cs">
@@ -182,13 +181,6 @@
     </Compile>
     <Compile Include="Profesor\TareasProfesor.aspx.designer.cs">
       <DependentUpon>TareasProfesor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AJAX\GridView.aspx.cs">
-      <DependentUpon>GridView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AJAX\GridView.aspx.designer.cs">
-      <DependentUpon>GridView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
