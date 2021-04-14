@@ -33,15 +33,20 @@
         </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick">
-        </asp:Timer>
-        <div>
-            <asp:Label ID="Label1" runat="server" Text="Profesor "></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="Label2" runat="server" Text="Alumno"></asp:Label>
-        </div>
-        <asp:ListBox ID="ListBox1" runat="server" Height="218px" Width="203px"></asp:ListBox>
-        <asp:ListBox ID="ListBox2" runat="server" Height="218px" Width="203px"></asp:ListBox>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick">
+                </asp:Timer>
+                <br />
+                <div>
+                    <asp:Label ID="Label1" runat="server" Text="Profesor "></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label2" runat="server" Text="Alumno"></asp:Label>
+                </div>
+                <asp:ListBox ID="ListBox1" runat="server" Height="218px" Width="203px"></asp:ListBox>
+                <asp:ListBox ID="ListBox2" runat="server" Height="218px" Width="203px"></asp:ListBox>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </form>
             </body>
 </html>
