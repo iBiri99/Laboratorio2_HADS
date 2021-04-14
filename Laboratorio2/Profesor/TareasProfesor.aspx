@@ -105,9 +105,6 @@ WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.E
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="DropDownList1" />
-            </Triggers>
 
 
         </asp:UpdatePanel>
