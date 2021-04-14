@@ -12,21 +12,6 @@
         }
     </style>
 </head>
-     <script>
-             setInterval(function () {
-             if (XMLHttpRequest) {
-                 xhr = new XMLHttpRequest();
-                 xhr.open('GET', '../AJAX/UsuariosConectados.aspx', true);
-                 xhr.onreadystatechange = function () {
-                     if (xhr.readyState == 4 && xhr.status == 200) {
-                         document.getElementById('Usuarios').innerHTML = xhr.responseText;
-                     }
-                 }
-                 xhr.send('');
-             }  
-             }, 5000);
-         </script>
-<body>
     <form id="form1" runat="server">
         <div style="height: 660px">
             <div style="height: 67px; background-color: #C0C0C0; color: #000000;">
@@ -46,8 +31,17 @@
                 </div>
             </div>
         </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick">
+        </asp:Timer>
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Profesor "></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label2" runat="server" Text="Alumno"></asp:Label>
+        </div>
+        <asp:ListBox ID="ListBox1" runat="server" Height="218px" Width="203px"></asp:ListBox>
+        <asp:ListBox ID="ListBox2" runat="server" Height="218px" Width="203px"></asp:ListBox>
     </form>
-                    <div id="Usuarios">
-    </div>
             </body>
 </html>

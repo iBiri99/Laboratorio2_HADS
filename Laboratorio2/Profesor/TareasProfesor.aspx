@@ -25,19 +25,6 @@
             }
          }
 
-         setInterval(function () {
-             if (XMLHttpRequest) {
-                 xhr = new XMLHttpRequest();
-                 xhr.open('GET', '../AJAX/UsuariosConectados.aspx', true);
-                 xhr.onreadystatechange = function () {
-                     if (xhr.readyState == 4 && xhr.status == 200) {
-                         document.getElementById('Usuarios').innerHTML = xhr.responseText;
-                     }
-                 }
-                 xhr.send('');
-             }  
-         }, 5000);
-
      </script>
 
 <body>
@@ -117,8 +104,18 @@ WHERE codigo in (SELECT Codigogrupo FROM ProfesoresGrupo WHERE ProfesoresGrupo.E
             </Columns>
         </asp:GridView>
         <br />
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick">
+        </asp:Timer>
+        <div>
+        &nbsp;<asp:Label ID="Label1" runat="server" Text="Profesores"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label2" runat="server" Text="Alumnos"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <asp:ListBox ID="ListBox1" runat="server" Height="218px" Width="203px"></asp:ListBox>
+        <asp:ListBox ID="ListBox2" runat="server" Height="218px" Width="203px"></asp:ListBox>
     </form>
-    <div id="Usuarios">
-    </div>
-</body>
+    </body>
 </html>
