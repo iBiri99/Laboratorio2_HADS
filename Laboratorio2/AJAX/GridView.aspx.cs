@@ -13,5 +13,10 @@ namespace Laboratorio2
         {
             Session["AsigCod"] = Request.QueryString["asig"];
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
