@@ -76,6 +76,7 @@
     <Content Include="App_Data\HAS.xml" />
     <Content Include="App_Data\SEG.xml" />
     <Content Include="App_Data\VerTablaTareas.xsl" />
+    <Content Include="WebService1.asmx" />
     <None Include="Connected Services\AlumWSDL\configuration91.svcinfo" />
     <None Include="Connected Services\AlumWSDL\configuration.svcinfo" />
     <None Include="Connected Services\AlumWSDL\Reference.svcmap">
@@ -199,6 +200,10 @@
     </Compile>
     <Compile Include="Profesor\TareasProfesor.aspx.designer.cs">
       <DependentUpon>TareasProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebService1.asmx.cs">
+      <DependentUpon>WebService1.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
