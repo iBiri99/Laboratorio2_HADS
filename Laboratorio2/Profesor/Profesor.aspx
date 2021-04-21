@@ -16,6 +16,8 @@
             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Profesor/ProfesorImportar.aspx">IMPORTAR .XML</asp:HyperLink>
             <br />
             <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Profesor/ProfesorExportar.aspx">Exportar .XML</asp:HyperLink>
+            <br />
+            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Profesor/coordinador.aspx">Coordinador</asp:HyperLink>
         </div>
     </form>
 </body>

@@ -76,6 +76,7 @@
     <Content Include="App_Data\HAS.xml" />
     <Content Include="App_Data\SEG.xml" />
     <Content Include="App_Data\VerTablaTareas.xsl" />
+    <Content Include="Profesor\coordinador.aspx" />
     <Content Include="WebService1.asmx" />
     <None Include="Connected Services\AlumWSDL\configuration91.svcinfo" />
     <None Include="Connected Services\AlumWSDL\configuration.svcinfo" />
@@ -110,6 +111,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\coordinador.aspx.cs">
+      <DependentUpon>coordinador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\coordinador.aspx.designer.cs">
+      <DependentUpon>coordinador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesor\InsertarTarea.aspx.cs">
       <DependentUpon>InsertarTarea.aspx</DependentUpon>
