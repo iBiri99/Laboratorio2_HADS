@@ -182,46 +182,55 @@ namespace AccesoADatos
 
             command = new SqlCommand("INSERT into Usuarios(email,nombre,apellidos,numconfir,confirmado,tipo,pass,codpass) Values(@email,@nombre,@apellidos,@numconf,@confirmado,@tipo,@pass,@codpass) ", cnn);
 
-            
 
-
-            command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
-            command.Parameters["@nombre"].Value = nombre;
-
-            command.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar);
-            command.Parameters["@apellidos"].Value = apellidos;
-
-            command.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
-            command.Parameters["@tipo"].Value = tipo; 
-
-
-
-            command.Parameters.Add("@numconf", System.Data.SqlDbType.Int);
-            command.Parameters["@numconf"].Value = numConf;
-
-            command.Parameters.Add("@confirmado", System.Data.SqlDbType.Bit);
-            command.Parameters["@confirmado"].Value = confirmado;
-
-            command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
-            command.Parameters["@email"].Value = correo;
-
-           
-            command.Parameters.Add("@pass", System.Data.SqlDbType.VarChar);
-            command.Parameters["@pass"].Value = epass;
-            
-
-            command.Parameters.Add("@codpass", System.Data.SqlDbType.Int);
-            command.Parameters["@codpass"].Value = codpass;
-
-            System.Diagnostics.Debug.WriteLine(pass);
-            int resul=(int)command.ExecuteNonQuery();
-            System.Diagnostics.Debug.WriteLine(pass);
-            System.Diagnostics.Debug.WriteLine(resul);
-            if (resul == 1)
+            ReferenciaEHU.Matriculas aas=new ReferenciaEHU.Matriculas();
+            String sollu=aas.comprobar(correo);
+            System.Diagnostics.Debug.WriteLine(sollu);
+            if (sollu == "SI")
             {
-                
+
+                command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
+                command.Parameters["@nombre"].Value = nombre;
+
+                command.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar);
+                command.Parameters["@apellidos"].Value = apellidos;
+
+                command.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
+                command.Parameters["@tipo"].Value = tipo;
+
+
+
+                command.Parameters.Add("@numconf", System.Data.SqlDbType.Int);
+                command.Parameters["@numconf"].Value = numConf;
+
+                command.Parameters.Add("@confirmado", System.Data.SqlDbType.Bit);
+                command.Parameters["@confirmado"].Value = confirmado;
+
+                command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+                command.Parameters["@email"].Value = correo;
+
+
+                command.Parameters.Add("@pass", System.Data.SqlDbType.VarChar);
+                command.Parameters["@pass"].Value = epass;
+
+
+                command.Parameters.Add("@codpass", System.Data.SqlDbType.Int);
+                command.Parameters["@codpass"].Value = codpass;
+
+                System.Diagnostics.Debug.WriteLine(pass);
+                int resul = (int)command.ExecuteNonQuery();
+                System.Diagnostics.Debug.WriteLine(pass);
+                System.Diagnostics.Debug.WriteLine(resul);
+                if (resul == 1)
+                {
+
+                }
+                return resul;
             }
-            return resul;
+            else
+            {
+                return 5;
+            }
             
 
         }

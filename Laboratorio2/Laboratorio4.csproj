@@ -47,6 +47,8 @@
       <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -74,6 +76,12 @@
     <Content Include="App_Data\HAS.xml" />
     <Content Include="App_Data\SEG.xml" />
     <Content Include="App_Data\VerTablaTareas.xsl" />
+    <None Include="Connected Services\AlumWSDL\configuration91.svcinfo" />
+    <None Include="Connected Services\AlumWSDL\configuration.svcinfo" />
+    <None Include="Connected Services\AlumWSDL\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Profesor\InsertarTarea.aspx" />
     <Content Include="Alumno\InstanciarTarea.aspx" />
     <Content Include="Profesor\Profesor.aspx" />
@@ -96,6 +104,11 @@
     </Compile>
     <Compile Include="Alumno\Alumno.aspx.designer.cs">
       <DependentUpon>Alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\AlumWSDL\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Profesor\InsertarTarea.aspx.cs">
       <DependentUpon>InsertarTarea.aspx</DependentUpon>
@@ -147,6 +160,11 @@
     <Compile Include="Confirmar.aspx.designer.cs">
       <DependentUpon>Confirmar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="registro.aspx.cs">
       <DependentUpon>registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -194,6 +212,7 @@
     <None Include="App_Data\tareas.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\AlumWSDL\comprobarmatricula.wsdl" />
     <None Include="packages.config" />
     <Content Include="Profesor\Web.config" />
     <None Include="Profesor\Web.Debug.config">
@@ -204,6 +223,10 @@
     </None>
     <None Include="Properties\PublishProfiles\HADS21-15 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\HADS21-15 - Web Deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,7 +244,15 @@
       <Name>EnvioCorreo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AlumWSDL\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

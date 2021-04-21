@@ -39,22 +39,22 @@ namespace Laboratorio2
             try
             {
                 bd = new AccesoADatos.Datos();
-                int resul;
+                int resul=9;
                 int a = bd.AbrirSesion();
                 if (a == 0)
                 {
                     resul = bd.registrar(nombre, apellidos, numconf, false, email, pass, codpass,DropDownList1.SelectedValue);
                 }
-
-                bd.cerrarConexion();
-                var sol=correo.enviarEmail(email,numconf, "https://localhost:44394/Confirmar.aspx");
-            
-
-                
-
-
-
-
+                if (resul == 5)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('El correo no es valido');", true);
+                }
+                else
+                {
+                    bd.cerrarConexion();
+                    System.Diagnostics.Debug.WriteLine(HttpContext.Current.Request.Url.AbsoluteUri + "/Confirmar.aspx");
+                    var sol = correo.enviarEmail(email, numconf, HttpContext.Current.Request.Url+ "/Confirmar.aspx");
+                }
 
             }
             catch(Exception ex)
